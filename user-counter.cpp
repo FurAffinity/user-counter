@@ -18,7 +18,7 @@ public:
 };
 
 static void show_usage() {
-	std::cerr << "Usage: user-counter <listen-address>" << std::endl;
+	std::cerr << "Usage: user-counter <listen-address>\n";
 }
 
 int main(int const argc, char const* const argv[]) {
@@ -29,7 +29,7 @@ int main(int const argc, char const* const argv[]) {
 
 	std::list<user> users;
 	std::map<userid_t, decltype(users)::const_iterator> user_map;
-	auto const period = std::chrono::minutes(15);
+	auto constexpr period = std::chrono::minutes(15);
 
 	int const s = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -70,7 +70,7 @@ int main(int const argc, char const* const argv[]) {
 		}
 
 		if (r != new_user.id.size()) {
-			std::cerr << "Ignoring message of size " << r << std::endl;
+			std::cerr << "Ignoring message of size " << r << "\n";
 			continue;
 		}
 
