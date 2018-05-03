@@ -9,19 +9,21 @@ extern "C" {
 	#include <unistd.h>
 }
 
-typedef std::array<unsigned char, 16> userid_t;
+namespace {
+	typedef std::array<unsigned char, 16> userid_t;
 
-class user {
-public:
-	userid_t id;
-	std::chrono::time_point<std::chrono::steady_clock> time;
-};
+	class user {
+	public:
+		userid_t id;
+		std::chrono::time_point<std::chrono::steady_clock> time;
+	};
 
-static void show_usage() {
-	std::cerr << "Usage: user-counter <listen-address>\n";
+	void show_usage() {
+		std::cerr << "Usage: user-counter <listen-address>\n";
+	}
 }
 
-int main(int const argc, char const* const argv[]) {
+int main(int argc, char* argv[]) {
 	if (argc != 2) {
 		show_usage();
 		return EXIT_FAILURE;
